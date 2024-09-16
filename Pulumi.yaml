@@ -1,0 +1,10 @@
+name: tailcall-launchpad
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+description: Tailcall Launchpad Application
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: serverless-aws-typescript

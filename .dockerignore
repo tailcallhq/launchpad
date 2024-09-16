@@ -1,0 +1,8 @@
+/target
+.vscode
+.idea
+/deployments/Pulumi.*.yaml
+/deployments/tailcall
+!/target/release/tailcall-launchpad
+/deployments/node_modules
+/deployments/bin

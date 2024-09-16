@@ -1,0 +1,27 @@
+[package]
+name = "tailcall-launchpad"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+prost = { version = "0.13" }
+tonic = { version = "0.12" }
+tonic-reflection = { version = "0.12" }
+tokio = { version = "1.0", features = [
+    "macros",
+    "rt-multi-thread",
+    "process",
+    "sync",
+] }
+tokio-stream = { version = "0.1.15" }
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+time = { version = "0.3.36", features = [] }
+thiserror = { version = "1.0.63", features = [] }
+dotenvy = { version = "0.15.7" }
+uuid = { version = "1.10.0", features = ["v4", "serde"] }
+regex = { version = "1.10.6" }
+axum = { version = "0.7.5" }
+
+[build-dependencies]
+tonic-build = "0.12"

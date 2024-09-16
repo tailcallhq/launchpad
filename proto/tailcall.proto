@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package tailcall;
+
+service GithubService {
+    rpc Deploy (GithubRequest) returns (stream StreamMessage);
+    rpc Teardown (GithubRequest) returns (stream StreamMessage);
+    rpc Status (GithubRequest) returns (GithubResponse);
+}
+
+message GithubRequest {
+    string username = 1;
+    string repository = 2;
+    string branch = 3;
+}
+
+message StreamMessage {
+    string message = 1;
+}
+
+message GithubResponse {
+    string username = 1;
+    string repository = 2;
+    string branch = 3;
+    string endpoint = 4;
+    GithubStatusEnum status = 5;
+    string updated_at = 6;
+}
+
+enum GithubStatusEnum {
+    Down = 0;
+    Error = 1;
+    Deployed = 2;
+}

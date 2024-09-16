@@ -1,0 +1,15 @@
+{
+  "semi": false,
+  "singleQuote": false,
+  "printWidth": 120,
+  "tabWidth": 2,
+  "bracketSpacing": false,
+  "overrides": [
+    {
+      "files": ["devcontainer.json"],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ]
+}
