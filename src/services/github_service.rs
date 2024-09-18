@@ -72,5 +72,10 @@ async fn send_error(message_channel: &MessageChannel, err: AppError) {
                 .send_status(Status::cancelled("IO Error"))
                 .await
         }
+        AppError::RemoteRequestError(_) => {
+            message_channel
+                .send_status(Status::cancelled("Remote Error"))
+                .await
+        }
     };
 }
