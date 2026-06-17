@@ -13,6 +13,19 @@ enum AppError {
     Simple(String),
     #[error("IO Error: {0}")]
     IoError(#[from] std::io::Error),
+    #[error("Remote Error: {0}")]
+    RemoteRequestError(#[from] reqwest::Error),
 }
 
 type AppResult<T> = Result<T, AppError>;
+
+// TODO: add logging to make debugging easier
+impl From<AppError> for tonic::Status {
+    fn from(value: AppError) -> Self {
+        match value {
+            AppError::Simple(error) => tonic::Status::aborted(error),
+            AppError::IoError(_error) => tonic::Status::internal("IO Error"),
+            AppError::RemoteRequestError(_error) => tonic::Status::internal("Remote Request Error"),
+        }
+    }
+}
